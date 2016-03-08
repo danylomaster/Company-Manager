@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.1.112/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.1.112/styles/kendo.default.min.css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2016.1.112/js/kendo.all.min.js"></script>
+    <title>Company Manager</title>
+</head>
+<body ng-app="CompanyManagerApp">
+    <div class="container" >
+        
+<div id="example">
+    <div class="demo-section k-content" ng-controller="MyCtrl">
+        <div class="box-col">
+            <h1>Company Manager</h1>
+            <h4>Name&nbsp;&#124;&nbsp;Estimated Earnings</h4>
+            <div id="treeview" kendo-tree-view="tree"
+             k-data-source="treeData"
+             k-on-change="selectedItem = dataItem" data-expanded="true">
+                <span k-template data-expanded="true">
+                     {{dataItem.title}}&nbsp;&#124;&nbsp;{{dataItem.earnings}}K&#36;&nbsp;<button class='btn btn-success' ng-click='click(dataItem)'>Show total</button>
+                 </span>
+             </div>
+        </div>
+
+        <div class="box-col" ng-show="selectedItem">
+            <h4>Selected:&nbsp;
+                <input type="text" value="test1" ng-model="selectedItem.title"/>&nbsp;
+                <input type="text" value="test1" ng-model="selectedItem.earnings"/>&nbsp;{{count}}
+                <button class="btn btn-warning" ng-click="applyChanges()">Apply Changes</button>
+            </h4>
+            <h4>New:&nbsp;
+                <input type="text" value="test1" ng-model="newItem.title"/>&nbsp;
+                <input type="text" value="test1" ng-model="newItem.earnings"/>
+            </h4>
+          <button class="btn btn-primary" ng-click="addAfter(selectedItem)">Add item below</button>
+          <button class="btn btn-info" ng-click="addBelow(selectedItem)">Add child item</button>
+          <button class="btn btn-danger" ng-click="remove(selectedItem)">Delete</button>
+        </div>
+    </div>
+    <style>
+        .k-treeview .k-in {
+            padding: 5px;
+        }
+    </style>
+</div>
+    
+     </div>
+
+
+
+    <script src="controllers/controller.js"></script>
+</body>
+</html>
