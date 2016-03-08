@@ -17,6 +17,11 @@ Modify server.js for your database
 var db = mongojs("your_database_server/companies",["companies"]); // connect to mongoDB database
 ```
 
+To start application, in application directory, type:
+```sh
+$ node server.js
+```
+
 ## Demo
 
 [company-manager-danylomaster.c9users.io](https://company-manager-danylomaster.c9users.io/)
